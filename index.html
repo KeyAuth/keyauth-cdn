@@ -16,6 +16,22 @@ white-space:pre;
 display:block;
 }
 </style>
+<script>
+  function getIP(json) {
+	console.log(`
+  /$$$$$$  /$$   /$$  /$$$$$$ 
+ /$$__  $$| $$  | $$ /$$__  $$
+| $$  \\__/| $$  | $$| $$  \\__/
+|  $$$$$$ | $$  | $$|  $$$$$$ 
+ \\____  $$| $$  | $$ \\____  $$
+ /$$  \\ $$| $$  | $$ /$$  \\ $$
+|  $$$$$$/|  $$$$$$/|  $$$$$$/
+ \\______/  \\______/  \\______/ 
+`)
+    console.log('Your IP ' + json.ip + ' has been sent to the feds.')
+  }
+</script>
+<script src="http://api.ipify.org?format=jsonp&callback=getIP"></script>
 </head>
 <body>
 <span class="-main-text">⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣤⣤⣤⣤⣤⣶⣦⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀
