@@ -33,13 +33,12 @@ function delay(milliseconds){return new Promise(resolve=>{setTimeout(resolve,mil
 <footer>
     <div class="footer">
         <hr>
-        <p style="color: #1b84e7;" class="footertext">Copyright &copy; 2020-
-            <script>
-                document.write(new Date().getFullYear())
-            </script> KeyAuth</p>
+        <p style="color: #1b84e7;" class="footertext" id="currYear">Copyright &copy; 2020-KeyAuth</p>
     </div>
 </footer>
 
 </div>
-
+<script>
+document.getElementById("currYear").innerHTML = "Copyright &copy; 2020-" + new Date().getFullYear() + " KeyAuth";
+</script>
 </html>
