@@ -156,7 +156,7 @@ iframe {
 
 .wrap-login100 {
   width: 390px;
-  background: #fff;
+  background: #151521;
   border-radius: 10px;
   position: relative;
 }
@@ -327,7 +327,7 @@ iframe {
 .login100-form-btn {
   font-family: Ubuntu-Bold;
   font-size: 16px;
-  color: #fff;
+  color:  #403866;
   line-height: 1.2;
   text-transform: uppercase;
 
@@ -366,7 +366,7 @@ iframe {
   content: attr(data-validate);
   position: absolute;
   max-width: 70%;
-  background-color: #fff;
+  background-color:  #403866;
   border: 1px solid #c80000;
   border-radius: 3px;
   padding: 4px 25px 5px 10px;
