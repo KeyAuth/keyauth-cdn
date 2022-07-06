@@ -10,3 +10,4 @@
   for = "/*"
     [headers.values]
     Access-Control-Allow-Origin = "*"
+    Cache-Control = "public, s-max-age=31556926"
