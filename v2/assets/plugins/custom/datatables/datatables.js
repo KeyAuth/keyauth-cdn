@@ -1,11 +1,13 @@
 $("#kt_datatable_licenses").DataTable({
+	"order": [[1, 'desc']],
 	'processing': true,
 	'serverSide': true,
 	'serverMethod': 'post',
 	'ajax': {
 		'url': 'license-fetch.php'
 	},
-	'columns': [{
+	'columns': [
+		{
 			data: 'key'
 		},
 		{
@@ -50,6 +52,7 @@ $("#kt_datatable_licenses").DataTable({
 });
 
 $("#kt_datatable_reseller_licenses").DataTable({
+	"order": [[1, 'desc']],
 	'processing': true,
 	'serverSide': true,
 	'serverMethod': 'post',
@@ -98,6 +101,7 @@ $("#kt_datatable_reseller_licenses").DataTable({
 });
 
 $("#kt_datatable_users").DataTable({
+	"order": [[3, 'desc']],
 	'processing': true,
 	'serverSide': true,
 	'serverMethod': 'post',
@@ -143,6 +147,7 @@ $("#kt_datatable_users").DataTable({
 });
 
 $("#kt_datatable_reseller_users").DataTable({
+	"order": [[3, 'desc']],
 	'processing': true,
 	'serverSide': true,
 	'serverMethod': 'post',
@@ -223,6 +228,7 @@ $("#kt_datatable_chats").DataTable({
 });
 
 $("#kt_datatable_messages").DataTable({
+	"order": [[2, 'desc']],
 	"language": {
 		"lengthMenu": "Show _MENU_",
 	},
@@ -240,6 +246,7 @@ $("#kt_datatable_messages").DataTable({
 });
 
 $("#kt_datatable_sessions").DataTable({
+	"order": [[2, 'desc']],
 	'processing': true,
 	'serverSide': true,
 	'serverMethod': 'post',
@@ -299,6 +306,7 @@ $("#kt_datatable_webhooks").DataTable({
 });
 
 $("#kt_datatable_files").DataTable({
+	"order": [[3, 'desc']],
 	"language": {
 		"lengthMenu": "Show _MENU_",
 	},
@@ -333,6 +341,7 @@ $("#kt_datatable_vars").DataTable({
 });
 
 $("#kt_datatable_logs").DataTable({
+	"order": [[0, 'desc']],
 	'processing': true,
 	'serverSide': true,
 	'serverMethod': 'post',
@@ -402,6 +411,7 @@ $("#kt_datatable_blacklists").DataTable({
 });
 
 $("#kt_datatable_account_logs").DataTable({
+	"order": [[0, 'desc']],
 	"language": {
 		"lengthMenu": "Show _MENU_",
 	},
