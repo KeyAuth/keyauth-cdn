@@ -408,36 +408,18 @@ $("#kt_datatable_blacklists").DataTable({
 		"<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
 		"<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
 		">",
-	"buttons": [{
-               "extend": 'copy',
-               "text": '<i class="fa fa-files-o" style="color: green;"></i>',
-               "titleAttr": 'Copy',                               
-               "action": newexportaction
-            },
-            {
-               "extend": 'excel',
-               "text": '<i class="fa fa-file-excel-o" style="color: green;"></i>',
-               "titleAttr": 'Excel',                               
-               "action": newexportaction
-            },
-            {
-               "extend": 'csv',
-               "text": '<i class="fa fa-file-text-o" style="color: green;"></i>',
-               "titleAttr": 'CSV',                               
-               "action": newexportaction
-            },
-            {
-               "extend": 'pdf',
-               "text": '<i class="fa fa-file-pdf-o" style="color: green;"></i>',
-               "titleAttr": 'PDF',                               
-               "action": newexportaction
-            },
-            {
-               "extend": 'print',
-               "text": '<i class="fa fa-print" style="color: green;"></i>',
-               "titleAttr": 'Print',                                
-               "action": newexportaction
-            }]
+	"buttons": [
+        {
+            "extend": 'excel',
+            "text": '<span class="fa fa-file-excel-o"></span> Excel Export',
+            "exportOptions": {
+                "modifier": {
+                    "search": 'applied',
+                    "order": 'applied'
+                }
+            }
+        }
+    ]
 });
 
 $("#kt_datatable_account_logs").DataTable({
