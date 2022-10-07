@@ -407,19 +407,7 @@ $("#kt_datatable_blacklists").DataTable({
 		"<'row'" +
 		"<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
 		"<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
-		">",
-	"buttons": [
-        {
-            "extend": 'excel',
-            "text": '<span class="fa fa-file-excel-o"></span> Excel Export',
-            "exportOptions": {
-                "modifier": {
-                    "search": 'applied',
-                    "order": 'applied'
-                }
-            }
-        }
-    ]
+		">"
 });
 
 $("#kt_datatable_account_logs").DataTable({
