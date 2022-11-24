@@ -377,6 +377,43 @@ $("#kt_datatable_logs").DataTable({
 		">"
 });
 
+$("#kt_datatable_af_logs").DataTable({
+	"order": [[0, 'desc']],
+	'processing': true,
+	'serverSide': true,
+	'serverMethod': 'post',
+	'ajax': {
+		'url': 'af-log-fetch.php'
+	},
+	'columns': [{
+			data: 'date'
+		},
+		{
+			data: 'referrer'
+		},
+		{
+			data: 'username'
+		},
+		{
+			data: 'action'
+		},
+	],
+	"language": {
+		"lengthMenu": "Show _MENU_",
+	},
+	"dom": "<'row'" +
+		"<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+		"<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+		">" +
+
+		"<'table-responsive'tr>" +
+
+		"<'row'" +
+		"<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+		"<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+		">"
+});
+
 $("#kt_datatable_blacklists").DataTable({
 	'processing': true,
 	'serverSide': true,
