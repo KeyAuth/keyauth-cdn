@@ -51,6 +51,7 @@ function newregistration() {
     }).then(function(json) {
        if (json.success) {
            window.alert(json.msg || 'registration success');
+	   location.reload();
        } else {
            throw new Error(json.msg);
        }
@@ -116,8 +117,7 @@ function checkregistration() {
         // analyze response
     }).then(function(json) {
        if (json.success) {
-		   window.location.replace('../app');
-           window.alert(json.msg || 'login success');
+	   window.location.replace('../app');
        } else {
            throw new Error(json.msg);
        }
