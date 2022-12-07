@@ -10,7 +10,7 @@ function newregistration() {
     }
   
     // get default args
-    window.fetch('server.php?fn=getCreateArgs', {method:'GET',cache:'no-cache'}).then(function(response) {
+    window.fetch('../api/dashboard/webauthn.php?fn=getCreateArgs', {method:'GET',cache:'no-cache'}).then(function(response) {
         return response.json();
 
         // convert base64 to arraybuffer
@@ -40,7 +40,7 @@ function newregistration() {
 
         // transfer to server
     }).then(JSON.stringify).then(function(AuthenticatorAttestationResponse) {
-        return window.fetch('server.php?fn=processCreate', {method:'POST', body: AuthenticatorAttestationResponse, cache:'no-cache'});
+        return window.fetch('../api/dashboard/webauthn.php?fn=processCreate', {method:'POST', body: AuthenticatorAttestationResponse, cache:'no-cache'});
 
         // convert to JSON
     }).then(function(response) {
@@ -73,7 +73,7 @@ function checkregistration() {
     }
 
     // get default args
-    window.fetch('server.php?fn=getGetArgs', {method:'GET',cache:'no-cache'}).then(function(response) {
+    window.fetch('../api/dashboard/webauthn.php?fn=getGetArgs', {method:'GET',cache:'no-cache'}).then(function(response) {
         return response.json();
 
         // convert base64 to arraybuffer
@@ -106,7 +106,7 @@ function checkregistration() {
 
         // transfer to server
     }).then(JSON.stringify).then(function(AuthenticatorAttestationResponse) {
-        return window.fetch('server.php?fn=processGet', {method:'POST', body: AuthenticatorAttestationResponse, cache:'no-cache'});
+        return window.fetch('../api/dashboard/webauthn.php?fn=processGet', {method:'POST', body: AuthenticatorAttestationResponse, cache:'no-cache'});
 
         // convert to json
     }).then(function(response) {
