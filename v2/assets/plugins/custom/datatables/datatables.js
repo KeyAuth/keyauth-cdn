@@ -324,7 +324,7 @@ $("#kt_datatable_files").DataTable({
 });
 
 $("#kt_datatable_vars").DataTable({
-	"order": [[1, 'asc']],
+	"order": [[0, 'asc']],
 	'processing': true,
 	'serverSide': true,
 	'serverMethod': 'post',
