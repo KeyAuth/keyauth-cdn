@@ -324,6 +324,26 @@ $("#kt_datatable_files").DataTable({
 });
 
 $("#kt_datatable_vars").DataTable({
+	"order": [[1, 'asc']],
+	'processing': true,
+	'serverSide': true,
+	'serverMethod': 'post',
+	'ajax': {
+		'url': 'var-fetch.php'
+	},
+	'columns': [{
+			data: 'name'
+		},
+		{
+			data: 'data'
+		},
+		{
+			data: 'authed'
+		},
+		{
+			data: 'actions'
+		},
+	],
 	"language": {
 		"lengthMenu": "Show _MENU_",
 	},
