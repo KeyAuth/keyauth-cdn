@@ -398,6 +398,7 @@ $("#kt_datatable_logs").DataTable({
 });
 
 $("#kt_datatable_blacklists").DataTable({
+	"order": [[1, 'desc']],
 	'processing': true,
 	'serverSide': true,
 	'serverMethod': 'post',
