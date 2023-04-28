@@ -335,7 +335,7 @@ $("#kt_datatable_vars").DataTable({
 			data: 'varid'
 		},
 		{
-			data: 'data'
+			data: 'msg'
 		},
 		{
 			data: 'authed'
