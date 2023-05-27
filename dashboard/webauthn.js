@@ -5,6 +5,11 @@
 function newregistration() {
 
     let name = document.getElementById('webauthn_name').value;
+	if (!name) {
+        window.alert('Must specify name for WebAuthn device');
+        return;
+    }
+	
     if (!window.fetch || !navigator.credentials || !navigator.credentials.create) {
         window.alert('Browser not supported.');
         return;
