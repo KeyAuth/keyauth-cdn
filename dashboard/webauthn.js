@@ -5,7 +5,7 @@
 function newregistration() {
 
     let name = document.getElementById('webauthn_name').value;
-    if (!name) {
+    if (name.length == 0) {
         window.alert('Must specify name for WebAuthn device');
         return;
     }
