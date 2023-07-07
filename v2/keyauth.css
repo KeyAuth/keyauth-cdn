@@ -60,7 +60,8 @@
      margin-left: 25% 
 }
  .nav-item {
-     margin-right: 5% 
+     margin-right: 5%;
+     white-space: nowrap
 }
  .first-descreption {
      color: var(--seacondry-color);
