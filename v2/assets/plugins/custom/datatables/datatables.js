@@ -51,6 +51,47 @@ $("#kt_datatable_licenses").DataTable({
 		">"
 });
 
+$("#kt_datatable_tokens").DataTable({
+	"order": [[1, 'desc']],
+	'processing': true,
+	'serverSide': true,
+	'serverMethod': 'post',
+	'ajax': {
+		'url': 'token-fetch.php'
+	},
+	'columns': [
+		{
+			data: 'token'
+		},
+		{
+			data: 'usedby'
+		},
+		{
+			data: 'status'
+		},
+		{
+			data: 'reason'
+		},
+		{
+			data: 'actions'
+		},
+	],
+	"language": {
+		"lengthMenu": "Show _MENU_"
+	},
+	"dom": "<'row'" +
+		"<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+		"<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+		">" +
+
+		"<'table-responsive'tr>" +
+
+		"<'row'" +
+		"<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+		"<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+		">"
+});
+
 $("#kt_datatable_reseller_licenses").DataTable({
 	"order": [[1, 'desc']],
 	'processing': true,
