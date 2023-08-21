@@ -1327,6 +1327,10 @@ input:checked + .toggle-bg {
   height: 0.875rem;
 }
 
+.h-32 {
+  height: 8rem;
+}
+
 .h-4 {
   height: 1rem;
 }
@@ -1600,6 +1604,10 @@ input:checked + .toggle-bg {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -1867,6 +1875,10 @@ input:checked + .toggle-bg {
   border-width: 0px;
 }
 
+.border-2 {
+  border-width: 2px;
+}
+
 .border-b {
   border-bottom-width: 1px;
 }
@@ -1889,6 +1901,10 @@ input:checked + .toggle-bg {
 
 .border-t-0 {
   border-top-width: 0px;
+}
+
+.border-dashed {
+  border-style: dashed;
 }
 
 .border-\[\#1b81cd\]\/70 {
@@ -1939,9 +1955,19 @@ input:checked + .toggle-bg {
   background-color: rgb(5 25 35 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#1a56db\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(26 86 219 / var(--tw-bg-opacity));
+}
+
 .bg-\[\#1b81cd\] {
   --tw-bg-opacity: 1;
   background-color: rgb(27 129 205 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#1e2631\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 38 49 / var(--tw-bg-opacity));
 }
 
 .bg-\[\#1f2937\] {
@@ -1956,6 +1982,26 @@ input:checked + .toggle-bg {
 
 .bg-\[\#282f3c\]\/70 {
   background-color: rgb(40 47 60 / 0.7);
+}
+
+.bg-\[\#48a049\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(72 160 73 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#63318c\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(99 49 140 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#d13f3e\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 63 62 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#e89a3e\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(232 154 62 / var(--tw-bg-opacity));
 }
 
 .bg-blue-50 {
@@ -2045,6 +2091,10 @@ input:checked + .toggle-bg {
 
 .p-1\.5 {
   padding: 0.375rem;
+}
+
+.p-12 {
+  padding: 3rem;
 }
 
 .p-2 {
@@ -2469,11 +2519,11 @@ input:checked + .toggle-bg {
 }
 
 body {
-  background-color: #051923;
+  background-color: #1e2631;
 }
 
 .main-background-color {
-  background-color: #051923;
+  background-color: #1e2631;
 }
 
 .hover\:border-gray-300:hover {
@@ -3240,6 +3290,10 @@ body {
 
   .lg\:hidden {
     display: none;
+  }
+
+  .lg\:h-64 {
+    height: 16rem;
   }
 
   .lg\:max-w-xl {
