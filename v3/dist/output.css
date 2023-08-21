@@ -1939,11 +1939,6 @@ input:checked + .toggle-bg {
   background-color: rgb(5 25 35 / var(--tw-bg-opacity));
 }
 
-.bg-\[\#16161e\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(22 22 30 / var(--tw-bg-opacity));
-}
-
 .bg-\[\#1b81cd\] {
   --tw-bg-opacity: 1;
   background-color: rgb(27 129 205 / var(--tw-bg-opacity));
@@ -1952,6 +1947,11 @@ input:checked + .toggle-bg {
 .bg-\[\#1f2937\] {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#3C162F\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(60 22 47 / var(--tw-bg-opacity));
 }
 
 .bg-blue-50 {
