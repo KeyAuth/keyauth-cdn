@@ -1949,9 +1949,13 @@ input:checked + .toggle-bg {
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
 
-.bg-\[\#3C162F\] {
+.bg-\[\#282f3c\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(60 22 47 / var(--tw-bg-opacity));
+  background-color: rgb(40 47 60 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#282f3c\]\/70 {
+  background-color: rgb(40 47 60 / 0.7);
 }
 
 .bg-blue-50 {
@@ -1967,11 +1971,6 @@ input:checked + .toggle-bg {
 .bg-blue-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(26 86 219 / var(--tw-bg-opacity));
-}
-
-.bg-blue-800 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(30 66 159 / var(--tw-bg-opacity));
 }
 
 .bg-gray-100 {
@@ -2754,11 +2753,6 @@ body {
 :is(.dark .dark\:bg-blue-600) {
   --tw-bg-opacity: 1;
   background-color: rgb(28 100 242 / var(--tw-bg-opacity));
-}
-
-:is(.dark .dark\:bg-blue-800) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(30 66 159 / var(--tw-bg-opacity));
 }
 
 :is(.dark .dark\:bg-gray-600) {
