@@ -61,19 +61,31 @@ $("#kt_datatable_tokens").DataTable({
 	},
 	'columns': [
 		{
+			data: 'id'
+		},
+		{
+			data: 'app'
+		},
+		{
 			data: 'token'
 		},
 		{
-			data: 'usedby'
+			data: 'assigned'
 		},
 		{
-			data: 'status'
+			data: 'banned'
 		},
 		{
 			data: 'reason'
 		},
 		{
-			data: 'actions'
+			data: 'hash'
+		},
+		{
+			data: 'type'
+		},
+		{
+			data: 'status'
 		},
 	],
 	"language": {
