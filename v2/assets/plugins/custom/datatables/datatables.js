@@ -8,9 +8,6 @@ $("#kt_datatable_licenses").DataTable({
 	},
 	'columns': [
 		{
-			data: 'key'
-		},
-		{
 			data: 'gendate'
 		},
 		{
