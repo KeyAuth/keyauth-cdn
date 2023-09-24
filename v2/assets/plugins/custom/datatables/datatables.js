@@ -61,6 +61,9 @@ $("#kt_datatable_tokens").DataTable({
 	},
 	'columns': [
 		{
+			data: 'id'
+		},
+		{
 			data: 'app'
 		},
 		{
