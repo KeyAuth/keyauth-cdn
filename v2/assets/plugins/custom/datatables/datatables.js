@@ -8,6 +8,9 @@ $("#kt_datatable_licenses").DataTable({
 	},
 	'columns': [
 		{
+			data: 'key'
+		}
+		{
 			data: 'gendate'
 		},
 		{
@@ -57,9 +60,6 @@ $("#kt_datatable_tokens").DataTable({
 		'url': 'token-fetch.php'
 	},
 	'columns': [
-		{
-			data: 'id'
-		},
 		{
 			data: 'app'
 		},
