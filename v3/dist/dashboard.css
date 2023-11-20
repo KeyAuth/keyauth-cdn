@@ -1,0 +1,180 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#loader {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.tfa-container {
+    display: flex;
+}
+
+.tfa-container input {
+    margin-right: 10px;
+    text-align: center;
+}
+
+.stars {
+    display: inline-block;
+    letter-spacing: -1.1px;
+    line-height: 1.25em;
+    -webkit-text-fill-color: transparent;
+    background-image: url(https://media2.giphy.com/media/0MntFC3sWkoQLbXzak/200w.gif?cid=6c09b952s95d3tl56g79hepbglu0t6n7q5i5d5vyrpf3lvmg&ep=v1_gifs_search&rid=200w.gif&ct=s);
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-size: 200% 200%;
+}
+
+#kt_datatable_webhooks_length label select {
+    width: 75px;
+    color: #ffffff !important;
+    background-color: #0f0f17 !important;
+    border: 1px solid #6b7280 !important;
+    border-radius: 5px !important;
+}
+
+#kt_datatable_licenses_length label select {
+    width: 75px;
+    color: #ffffff !important;
+    background-color: #0f0f17 !important;
+    border: 1px solid #6b7280 !important;
+    border-radius: 5px !important;
+}
+
+#kt_datatable_users_length label select {
+    width: 75px;
+    color: #ffffff !important;
+    background-color: #0f0f17 !important;
+    border: 1px solid #6b7280 !important;
+    border-radius: 5px !important;
+}
+
+#kt_datatable_tokens_length label select {
+    width: 75px;
+    color: #ffffff !important;
+    background-color: #0f0f17 !important;
+    border: 1px solid #6b7280 !important;
+    border-radius: 5px !important;
+}
+
+#kt_datatable_subs_length label select {
+    width: 75px;
+    color: #ffffff !important;
+    background-color: #0f0f17 !important;
+    border: 1px solid #6b7280 !important;
+    border-radius: 5px !important;
+}
+
+#kt_datatable_chats_length label select {
+    width: 75px;
+    color: #ffffff !important;
+    background-color: #0f0f17 !important;
+    border: 1px solid #6b7280 !important;
+    border-radius: 5px !important;
+}
+
+#kt_datatable_messages_length label select {
+    width: 75px;
+    color: #ffffff !important;
+    background-color: #0f0f17 !important;
+    border: 1px solid #6b7280 !important;
+    border-radius: 5px !important;
+}
+
+#kt_datatable_sessions_length label select {
+    width: 75px;
+    color: #ffffff !important;
+    background-color: #0f0f17 !important;
+    border: 1px solid #6b7280 !important;
+    border-radius: 5px !important;
+}
+
+#kt_datatable_webhooks_length label select {
+    width: 75px;
+    color: #ffffff !important;
+    background-color: #0f0f17 !important;
+    border: 1px solid #6b7280 !important;
+    border-radius: 5px !important;
+}
+
+#kt_datatable_files_length label select {
+    width: 75px;
+    color: #ffffff !important;
+    background-color: #0f0f17 !important;
+    border: 1px solid #6b7280 !important;
+    border-radius: 5px !important;
+}
+
+#kt_datatable_vars_length label select {
+    width: 75px;
+    color: #ffffff !important;
+    background-color: #0f0f17 !important;
+    border: 1px solid #6b7280 !important;
+    border-radius: 5px !important;
+}
+
+#kt_datatable_logs_length label select {
+    width: 75px;
+    color: #ffffff !important;
+    background-color: #0f0f17 !important;
+    border: 1px solid #6b7280 !important;
+    border-radius: 5px !important;
+}
+
+#kt_datatable_blacklists_length label select {
+    width: 75px;
+    color: #ffffff !important;
+    background-color: #0f0f17 !important;
+    border: 1px solid #6b7280 !important;
+    border-radius: 5px !important;
+}
+
+#kt_datatable_auditlogs_length label select {
+    width: 75px;
+    color: #ffffff !important;
+    background-color: #0f0f17 !important;
+    border: 1px solid #6b7280 !important;
+    border-radius: 5px !important;
+}
+
+#kt_datatable_webloader_length label select {
+    width: 75px;
+    color: #ffffff !important;
+    background-color: #0f0f17 !important;
+    border: 1px solid #6b7280 !important;
+    border-radius: 5px !important;
+}
+
+#kt_datatable_manageaccs_length label select {
+    width: 75px;
+    color: #ffffff !important;
+    background-color: #0f0f17 !important;
+    border: 1px solid #6b7280 !important;
+    border-radius: 5px !important;
+}
+
+#kt_datatable_reseller_licenses_length label select {
+    width: 75px;
+    color: #ffffff !important;
+    background-color: #0f0f17 !important;
+    border: 1px solid #6b7280 !important;
+    border-radius: 5px !important;
+}
+
+#kt_datatable_reseller_users_length label select {
+    width: 75px;
+    color: #ffffff !important;
+    background-color: #0f0f17 !important;
+    border: 1px solid #6b7280 !important;
+    border-radius: 5px !important;
+}
