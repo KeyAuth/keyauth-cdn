@@ -5,8 +5,8 @@ function updatePricing() {
         $("#seller_mode").text("24.99 / Year");
     } else {
         $("#tester_mode").text("0 / Month");
-        $("#developer_mode").text("4.99 / Month");
-        $("#seller_mode").text("7.99 / Month");
+        $("#developer_mode").text("2.99 / Month");
+        $("#seller_mode").text("4.99 / Month");
     }
 }
 
