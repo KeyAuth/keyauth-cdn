@@ -196,6 +196,43 @@ $("#kt_datatable_users").DataTable({
 		">"
 });
 
+$("#kt_datatable_user_vars").DataTable({
+	"order": [[2, 'asc']],
+	'processing': true,
+	'serverSide': true,
+	'serverMethod': 'post',
+	'ajax': {
+		'url': 'user-var-fetch.php'
+	},
+	'columns': [{
+			data: 'name'
+		},
+		{
+			data: 'data'
+		},
+		{
+			data: 'user'
+		},
+		{
+			data: 'readOnly'
+		},
+	],
+	"language": {
+		"lengthMenu": "Show _MENU_",
+	},
+	"dom": "<'row'" +
+		"<'col-sm-6 d-flex align-items-center justify-conten-start'l>" +
+		"<'col-sm-6 d-flex align-items-center justify-content-end'f>" +
+		">" +
+
+		"<'table-responsive'tr>" +
+
+		"<'row'" +
+		"<'col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start'i>" +
+		"<'col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end'p>" +
+		">"
+});
+
 $("#kt_datatable_reseller_users").DataTable({
 	"order": [[3, 'desc']],
 	'processing': true,
