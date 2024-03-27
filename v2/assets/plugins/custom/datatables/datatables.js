@@ -216,6 +216,9 @@ $("#kt_datatable_user_vars").DataTable({
 		{
 			data: 'readOnly'
 		},
+		{
+			data: 'actions'
+		},
 	],
 	"language": {
 		"lengthMenu": "Show _MENU_",
