@@ -2202,7 +2202,7 @@ var Accordion = /** @class */ (function () {
                     i.active = false;
                     // rotate icon if set
                     if (i.iconEl) {
-                        i.iconEl.classList.remove('rotate-180');
+                        i.iconEl.classList.add('rotate-180');
                     }
                 }
             });
@@ -2215,7 +2215,7 @@ var Accordion = /** @class */ (function () {
         item.active = true;
         // rotate icon if set
         if (item.iconEl) {
-            item.iconEl.classList.add('rotate-180');
+            item.iconEl.classList.remove('rotate-180');
         }
         // callback function
         this._options.onOpen(this, item);
@@ -2241,10 +2241,19 @@ var Accordion = /** @class */ (function () {
         item.active = false;
         // rotate icon if set
         if (item.iconEl) {
-            item.iconEl.classList.remove('rotate-180');
+            item.iconEl.classList.add('rotate-180');
         }
         // callback function
         this._options.onClose(this, item);
+    };
+    Accordion.prototype.updateOnOpen = function (callback) {
+        this._options.onOpen = callback;
+    };
+    Accordion.prototype.updateOnClose = function (callback) {
+        this._options.onClose = callback;
+    };
+    Accordion.prototype.updateOnToggle = function (callback) {
+        this._options.onToggle = callback;
     };
     return Accordion;
 }());
@@ -2357,8 +2366,8 @@ var Carousel = /** @class */ (function () {
                 item.el.classList.add('absolute', 'inset-0', 'transition-transform', 'transform');
             });
             // if no active item is set then first position is default
-            if (this._getActiveItem()) {
-                this.slideTo(this._getActiveItem().position);
+            if (this.getActiveItem()) {
+                this.slideTo(this.getActiveItem().position);
             }
             else {
                 this.slideTo(0);
@@ -2413,7 +2422,7 @@ var Carousel = /** @class */ (function () {
      * Based on the currently active item it will go to the next position
      */
     Carousel.prototype.next = function () {
-        var activeItem = this._getActiveItem();
+        var activeItem = this.getActiveItem();
         var nextItem = null;
         // check if last item
         if (activeItem.position === this._items.length - 1) {
@@ -2430,7 +2439,7 @@ var Carousel = /** @class */ (function () {
      * Based on the currently active item it will go to the previous position
      */
     Carousel.prototype.prev = function () {
-        var activeItem = this._getActiveItem();
+        var activeItem = this.getActiveItem();
         var prevItem = null;
         // check if first item
         if (activeItem.position === 0) {
@@ -2452,15 +2461,21 @@ var Carousel = /** @class */ (function () {
         this._items.map(function (item) {
             item.el.classList.add('hidden');
         });
+        // Handling the case when there is only one item
+        if (this._items.length === 1) {
+            rotationItems.middle.el.classList.remove('-translate-x-full', 'translate-x-full', 'translate-x-0', 'hidden', 'z-10');
+            rotationItems.middle.el.classList.add('translate-x-0', 'z-20');
+            return;
+        }
         // left item (previously active)
         rotationItems.left.el.classList.remove('-translate-x-full', 'translate-x-full', 'translate-x-0', 'hidden', 'z-20');
         rotationItems.left.el.classList.add('-translate-x-full', 'z-10');
         // currently active item
         rotationItems.middle.el.classList.remove('-translate-x-full', 'translate-x-full', 'translate-x-0', 'hidden', 'z-10');
-        rotationItems.middle.el.classList.add('translate-x-0', 'z-20');
+        rotationItems.middle.el.classList.add('translate-x-0', 'z-30');
         // right item (upcoming active)
-        rotationItems.right.el.classList.remove('-translate-x-full', 'translate-x-full', 'translate-x-0', 'hidden', 'z-20');
-        rotationItems.right.el.classList.add('translate-x-full', 'z-10');
+        rotationItems.right.el.classList.remove('-translate-x-full', 'translate-x-full', 'translate-x-0', 'hidden', 'z-30');
+        rotationItems.right.el.classList.add('translate-x-full', 'z-20');
     };
     /**
      * Set an interval to cycle through the carousel items
@@ -2482,7 +2497,7 @@ var Carousel = /** @class */ (function () {
     /**
      * Get the currently active item
      */
-    Carousel.prototype._getActiveItem = function () {
+    Carousel.prototype.getActiveItem = function () {
         return this._activeItem;
     };
     /**
@@ -2506,6 +2521,15 @@ var Carousel = /** @class */ (function () {
             (_b = this._indicators[position].el.classList).remove.apply(_b, this._options.indicators.inactiveClasses.split(' '));
             this._indicators[position].el.setAttribute('aria-current', 'true');
         }
+    };
+    Carousel.prototype.updateOnNext = function (callback) {
+        this._options.onNext = callback;
+    };
+    Carousel.prototype.updateOnPrev = function (callback) {
+        this._options.onPrev = callback;
+    };
+    Carousel.prototype.updateOnChange = function (callback) {
+        this._options.onChange = callback;
     };
     return Carousel;
 }());
@@ -2569,6 +2593,155 @@ if (typeof window !== 'undefined') {
     window.initCarousels = initCarousels;
 }
 exports["default"] = Carousel;
+
+
+/***/ }),
+
+/***/ 673:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.initCopyClipboards = void 0;
+var instances_1 = __webpack_require__(423);
+var Default = {
+    htmlEntities: false,
+    contentType: 'input',
+    onCopy: function () { },
+};
+var DefaultInstanceOptions = {
+    id: null,
+    override: true,
+};
+var CopyClipboard = /** @class */ (function () {
+    function CopyClipboard(triggerEl, targetEl, options, instanceOptions) {
+        if (triggerEl === void 0) { triggerEl = null; }
+        if (targetEl === void 0) { targetEl = null; }
+        if (options === void 0) { options = Default; }
+        if (instanceOptions === void 0) { instanceOptions = DefaultInstanceOptions; }
+        this._instanceId = instanceOptions.id
+            ? instanceOptions.id
+            : targetEl.id;
+        this._triggerEl = triggerEl;
+        this._targetEl = targetEl;
+        this._options = __assign(__assign({}, Default), options);
+        this._initialized = false;
+        this.init();
+        instances_1.default.addInstance('CopyClipboard', this, this._instanceId, instanceOptions.override);
+    }
+    CopyClipboard.prototype.init = function () {
+        var _this = this;
+        if (this._targetEl && this._triggerEl && !this._initialized) {
+            this._triggerElClickHandler = function () {
+                _this.copy();
+            };
+            // clicking on the trigger element should copy the value of the target element
+            if (this._triggerEl) {
+                this._triggerEl.addEventListener('click', this._triggerElClickHandler);
+            }
+            this._initialized = true;
+        }
+    };
+    CopyClipboard.prototype.destroy = function () {
+        if (this._triggerEl && this._targetEl && this._initialized) {
+            if (this._triggerEl) {
+                this._triggerEl.removeEventListener('click', this._triggerElClickHandler);
+            }
+            this._initialized = false;
+        }
+    };
+    CopyClipboard.prototype.removeInstance = function () {
+        instances_1.default.removeInstance('CopyClipboard', this._instanceId);
+    };
+    CopyClipboard.prototype.destroyAndRemoveInstance = function () {
+        this.destroy();
+        this.removeInstance();
+    };
+    CopyClipboard.prototype.getTargetValue = function () {
+        if (this._options.contentType === 'input') {
+            return this._targetEl.value;
+        }
+        if (this._options.contentType === 'innerHTML') {
+            return this._targetEl.innerHTML;
+        }
+        if (this._options.contentType === 'textContent') {
+            return this._targetEl.textContent.replace(/\s+/g, ' ').trim();
+        }
+    };
+    CopyClipboard.prototype.copy = function () {
+        var textToCopy = this.getTargetValue();
+        // Check if HTMLEntities option is enabled
+        if (this._options.htmlEntities) {
+            // Encode the text using HTML entities
+            textToCopy = this.decodeHTML(textToCopy);
+        }
+        // Create a temporary textarea element
+        var tempTextArea = document.createElement('textarea');
+        tempTextArea.value = textToCopy;
+        document.body.appendChild(tempTextArea);
+        // Select the text inside the textarea and copy it to the clipboard
+        tempTextArea.select();
+        document.execCommand('copy');
+        // Remove the temporary textarea
+        document.body.removeChild(tempTextArea);
+        // Callback function
+        this._options.onCopy(this);
+        return textToCopy;
+    };
+    // Function to encode text into HTML entities
+    CopyClipboard.prototype.decodeHTML = function (html) {
+        var textarea = document.createElement('textarea');
+        textarea.innerHTML = html;
+        return textarea.textContent;
+    };
+    CopyClipboard.prototype.updateOnCopyCallback = function (callback) {
+        this._options.onCopy = callback;
+    };
+    return CopyClipboard;
+}());
+function initCopyClipboards() {
+    document
+        .querySelectorAll('[data-copy-to-clipboard-target]')
+        .forEach(function ($triggerEl) {
+        var targetId = $triggerEl.getAttribute('data-copy-to-clipboard-target');
+        var $targetEl = document.getElementById(targetId);
+        var contentType = $triggerEl.getAttribute('data-copy-to-clipboard-content-type');
+        var htmlEntities = $triggerEl.getAttribute('data-copy-to-clipboard-html-entities');
+        // check if the target element exists
+        if ($targetEl) {
+            if (!instances_1.default.instanceExists('CopyClipboard', $targetEl.getAttribute('id'))) {
+                new CopyClipboard($triggerEl, $targetEl, {
+                    htmlEntities: htmlEntities && htmlEntities === 'true'
+                        ? true
+                        : Default.htmlEntities,
+                    contentType: contentType
+                        ? contentType
+                        : Default.contentType,
+                });
+            }
+        }
+        else {
+            console.error("The target element with id \"".concat(targetId, "\" does not exist. Please check the data-copy-to-clipboard-target attribute."));
+        }
+    });
+}
+exports.initCopyClipboards = initCopyClipboards;
+if (typeof window !== 'undefined') {
+    window.CopyClipboard = CopyClipboard;
+    window.initClipboards = initCopyClipboards;
+}
+exports["default"] = CopyClipboard;
 
 
 /***/ }),
@@ -2675,6 +2848,15 @@ var Collapse = /** @class */ (function () {
         }
         // callback function
         this._options.onToggle(this);
+    };
+    Collapse.prototype.updateOnCollapse = function (callback) {
+        this._options.onCollapse = callback;
+    };
+    Collapse.prototype.updateOnExpand = function (callback) {
+        this._options.onExpand = callback;
+    };
+    Collapse.prototype.updateOnToggle = function (callback) {
+        this._options.onToggle = callback;
     };
     return Collapse;
 }());
@@ -2859,6 +3041,15 @@ var Dial = /** @class */ (function () {
                 };
         }
     };
+    Dial.prototype.updateOnShow = function (callback) {
+        this._options.onShow = callback;
+    };
+    Dial.prototype.updateOnHide = function (callback) {
+        this._options.onHide = callback;
+    };
+    Dial.prototype.updateOnToggle = function (callback) {
+        this._options.onToggle = callback;
+    };
     return Dial;
 }());
 function initDials() {
@@ -2969,6 +3160,9 @@ var Dismiss = /** @class */ (function () {
         }, this._options.duration);
         // callback function
         this._options.onHide(this, this._targetEl);
+    };
+    Dismiss.prototype.updateOnHide = function (callback) {
+        this._options.onHide = callback;
     };
     return Dismiss;
 }());
@@ -3174,7 +3368,8 @@ var Drawer = /** @class */ (function () {
         }
     };
     Drawer.prototype._destroyBackdropEl = function () {
-        if (this._visible) {
+        if (this._visible &&
+            document.querySelector('[drawer-backdrop]') !== null) {
             document.querySelector('[drawer-backdrop]').remove();
         }
     };
@@ -3239,6 +3434,15 @@ var Drawer = /** @class */ (function () {
     };
     Drawer.prototype.getAllEventListenerInstances = function () {
         return this._eventListenerInstances;
+    };
+    Drawer.prototype.updateOnShow = function (callback) {
+        this._options.onShow = callback;
+    };
+    Drawer.prototype.updateOnHide = function (callback) {
+        this._options.onHide = callback;
+    };
+    Drawer.prototype.updateOnToggle = function (callback) {
+        this._options.onToggle = callback;
     };
     return Drawer;
 }());
@@ -3602,6 +3806,15 @@ var Dropdown = /** @class */ (function () {
         // callback function
         this._options.onHide(this);
     };
+    Dropdown.prototype.updateOnShow = function (callback) {
+        this._options.onShow = callback;
+    };
+    Dropdown.prototype.updateOnHide = function (callback) {
+        this._options.onHide = callback;
+    };
+    Dropdown.prototype.updateOnToggle = function (callback) {
+        this._options.onToggle = callback;
+    };
     return Dropdown;
 }());
 function initDropdowns() {
@@ -3657,11 +3870,13 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.initFlowbite = void 0;
 var accordion_1 = __webpack_require__(902);
 var carousel_1 = __webpack_require__(33);
+var clipboard_1 = __webpack_require__(673);
 var collapse_1 = __webpack_require__(922);
 var dial_1 = __webpack_require__(556);
 var dismiss_1 = __webpack_require__(791);
 var drawer_1 = __webpack_require__(340);
 var dropdown_1 = __webpack_require__(316);
+var input_counter_1 = __webpack_require__(656);
 var modal_1 = __webpack_require__(16);
 var popover_1 = __webpack_require__(903);
 var tabs_1 = __webpack_require__(247);
@@ -3678,11 +3893,178 @@ function initFlowbite() {
     (0, tooltip_1.initTooltips)();
     (0, popover_1.initPopovers)();
     (0, dial_1.initDials)();
+    (0, input_counter_1.initInputCounters)();
+    (0, clipboard_1.initCopyClipboards)();
 }
 exports.initFlowbite = initFlowbite;
 if (typeof window !== 'undefined') {
     window.initFlowbite = initFlowbite;
 }
+
+
+/***/ }),
+
+/***/ 656:
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.initInputCounters = void 0;
+var instances_1 = __webpack_require__(423);
+var Default = {
+    minValue: null,
+    maxValue: null,
+    onIncrement: function () { },
+    onDecrement: function () { },
+};
+var DefaultInstanceOptions = {
+    id: null,
+    override: true,
+};
+var InputCounter = /** @class */ (function () {
+    function InputCounter(targetEl, incrementEl, decrementEl, options, instanceOptions) {
+        if (targetEl === void 0) { targetEl = null; }
+        if (incrementEl === void 0) { incrementEl = null; }
+        if (decrementEl === void 0) { decrementEl = null; }
+        if (options === void 0) { options = Default; }
+        if (instanceOptions === void 0) { instanceOptions = DefaultInstanceOptions; }
+        this._instanceId = instanceOptions.id
+            ? instanceOptions.id
+            : targetEl.id;
+        this._targetEl = targetEl;
+        this._incrementEl = incrementEl;
+        this._decrementEl = decrementEl;
+        this._options = __assign(__assign({}, Default), options);
+        this._initialized = false;
+        this.init();
+        instances_1.default.addInstance('InputCounter', this, this._instanceId, instanceOptions.override);
+    }
+    InputCounter.prototype.init = function () {
+        var _this = this;
+        if (this._targetEl && !this._initialized) {
+            this._inputHandler = function (event) {
+                {
+                    var target = event.target;
+                    // check if the value is numeric
+                    if (!/^\d*$/.test(target.value)) {
+                        // Regex to check if the value is numeric
+                        target.value = target.value.replace(/[^\d]/g, ''); // Remove non-numeric characters
+                    }
+                    // check for max value
+                    if (_this._options.maxValue !== null &&
+                        parseInt(target.value) > _this._options.maxValue) {
+                        target.value = _this._options.maxValue.toString();
+                    }
+                    // check for min value
+                    if (_this._options.minValue !== null &&
+                        parseInt(target.value) < _this._options.minValue) {
+                        target.value = _this._options.minValue.toString();
+                    }
+                }
+            };
+            this._incrementClickHandler = function () {
+                _this.increment();
+            };
+            this._decrementClickHandler = function () {
+                _this.decrement();
+            };
+            // Add event listener to restrict input to numeric values only
+            this._targetEl.addEventListener('input', this._inputHandler);
+            if (this._incrementEl) {
+                this._incrementEl.addEventListener('click', this._incrementClickHandler);
+            }
+            if (this._decrementEl) {
+                this._decrementEl.addEventListener('click', this._decrementClickHandler);
+            }
+            this._initialized = true;
+        }
+    };
+    InputCounter.prototype.destroy = function () {
+        if (this._targetEl && this._initialized) {
+            this._targetEl.removeEventListener('input', this._inputHandler);
+            if (this._incrementEl) {
+                this._incrementEl.removeEventListener('click', this._incrementClickHandler);
+            }
+            if (this._decrementEl) {
+                this._decrementEl.removeEventListener('click', this._decrementClickHandler);
+            }
+            this._initialized = false;
+        }
+    };
+    InputCounter.prototype.removeInstance = function () {
+        instances_1.default.removeInstance('InputCounter', this._instanceId);
+    };
+    InputCounter.prototype.destroyAndRemoveInstance = function () {
+        this.destroy();
+        this.removeInstance();
+    };
+    InputCounter.prototype.getCurrentValue = function () {
+        return parseInt(this._targetEl.value) || 0;
+    };
+    InputCounter.prototype.increment = function () {
+        // don't increment if the value is already at the maximum value
+        if (this._options.maxValue !== null &&
+            this.getCurrentValue() >= this._options.maxValue) {
+            return;
+        }
+        this._targetEl.value = (this.getCurrentValue() + 1).toString();
+        this._options.onIncrement(this);
+    };
+    InputCounter.prototype.decrement = function () {
+        // don't decrement if the value is already at the minimum value
+        if (this._options.minValue !== null &&
+            this.getCurrentValue() <= this._options.minValue) {
+            return;
+        }
+        this._targetEl.value = (this.getCurrentValue() - 1).toString();
+        this._options.onDecrement(this);
+    };
+    InputCounter.prototype.updateOnIncrement = function (callback) {
+        this._options.onIncrement = callback;
+    };
+    InputCounter.prototype.updateOnDecrement = function (callback) {
+        this._options.onDecrement = callback;
+    };
+    return InputCounter;
+}());
+function initInputCounters() {
+    document.querySelectorAll('[data-input-counter]').forEach(function ($targetEl) {
+        var targetId = $targetEl.id;
+        var $incrementEl = document.querySelector('[data-input-counter-increment="' + targetId + '"]');
+        var $decrementEl = document.querySelector('[data-input-counter-decrement="' + targetId + '"]');
+        var minValue = $targetEl.getAttribute('data-input-counter-min');
+        var maxValue = $targetEl.getAttribute('data-input-counter-max');
+        // check if the target element exists
+        if ($targetEl) {
+            if (!instances_1.default.instanceExists('InputCounter', $targetEl.getAttribute('id'))) {
+                new InputCounter($targetEl, $incrementEl ? $incrementEl : null, $decrementEl ? $decrementEl : null, {
+                    minValue: minValue ? parseInt(minValue) : null,
+                    maxValue: maxValue ? parseInt(maxValue) : null,
+                });
+            }
+        }
+        else {
+            console.error("The target element with id \"".concat(targetId, "\" does not exist. Please check the data-input-counter attribute."));
+        }
+    });
+}
+exports.initInputCounters = initInputCounters;
+if (typeof window !== 'undefined') {
+    window.InputCounter = InputCounter;
+    window.initInputCounters = initInputCounters;
+}
+exports["default"] = InputCounter;
 
 
 /***/ }),
@@ -3895,6 +4277,15 @@ var Modal = /** @class */ (function () {
     };
     Modal.prototype.getAllEventListenerInstances = function () {
         return this._eventListenerInstances;
+    };
+    Modal.prototype.updateOnShow = function (callback) {
+        this._options.onShow = callback;
+    };
+    Modal.prototype.updateOnHide = function (callback) {
+        this._options.onHide = callback;
+    };
+    Modal.prototype.updateOnToggle = function (callback) {
+        this._options.onToggle = callback;
     };
     return Modal;
 }());
@@ -4222,6 +4613,15 @@ var Popover = /** @class */ (function () {
         // callback function
         this._options.onHide(this);
     };
+    Popover.prototype.updateOnShow = function (callback) {
+        this._options.onShow = callback;
+    };
+    Popover.prototype.updateOnHide = function (callback) {
+        this._options.onHide = callback;
+    };
+    Popover.prototype.updateOnToggle = function (callback) {
+        this._options.onToggle = callback;
+    };
     return Popover;
 }());
 function initPopovers() {
@@ -4310,7 +4710,8 @@ var Tabs = /** @class */ (function () {
             this.show(this._activeTab.id, true);
             // show tab content based on click
             this._items.map(function (tab) {
-                tab.triggerEl.addEventListener('click', function () {
+                tab.triggerEl.addEventListener('click', function (event) {
+                    event.preventDefault();
                     _this.show(tab.id);
                 });
             });
@@ -4366,11 +4767,16 @@ var Tabs = /** @class */ (function () {
         // callback function
         this._options.onShow(this, tab);
     };
+    Tabs.prototype.updateOnShow = function (callback) {
+        this._options.onShow = callback;
+    };
     return Tabs;
 }());
 function initTabs() {
     document.querySelectorAll('[data-tabs-toggle]').forEach(function ($parentEl) {
         var tabItems = [];
+        var activeClasses = $parentEl.getAttribute('data-tabs-active-classes');
+        var inactiveClasses = $parentEl.getAttribute('data-tabs-inactive-classes');
         var defaultTabId = null;
         $parentEl
             .querySelectorAll('[role="tab"]')
@@ -4388,6 +4794,12 @@ function initTabs() {
         });
         new Tabs($parentEl, tabItems, {
             defaultTabId: defaultTabId,
+            activeClasses: activeClasses
+                ? activeClasses
+                : Default.activeClasses,
+            inactiveClasses: inactiveClasses
+                ? inactiveClasses
+                : Default.inactiveClasses,
         });
     });
 }
@@ -4624,6 +5036,15 @@ var Tooltip = /** @class */ (function () {
         // callback function
         this._options.onHide(this);
     };
+    Tooltip.prototype.updateOnShow = function (callback) {
+        this._options.onShow = callback;
+    };
+    Tooltip.prototype.updateOnHide = function (callback) {
+        this._options.onHide = callback;
+    };
+    Tooltip.prototype.updateOnToggle = function (callback) {
+        this._options.onToggle = callback;
+    };
     return Tooltip;
 }());
 function initTooltips() {
@@ -4700,6 +5121,8 @@ var Instances = /** @class */ (function () {
             Popover: {},
             Tabs: {},
             Tooltip: {},
+            InputCounter: {},
+            CopyClipboard: {},
         };
     }
     Instances.prototype.addInstance = function (component, instance, id, override) {
@@ -4866,6 +5289,8 @@ var modal_1 = __webpack_require__(16);
 var popover_1 = __webpack_require__(903);
 var tabs_1 = __webpack_require__(247);
 var tooltip_1 = __webpack_require__(671);
+var input_counter_1 = __webpack_require__(656);
+var clipboard_1 = __webpack_require__(673);
 __webpack_require__(311);
 var events_1 = __webpack_require__(947);
 var events = new events_1.default('load', [
@@ -4880,6 +5305,8 @@ var events = new events_1.default('load', [
     tooltip_1.initTooltips,
     popover_1.initPopovers,
     dial_1.initDials,
+    clipboard_1.initCopyClipboards,
+    input_counter_1.initInputCounters,
 ]);
 events.init();
 exports["default"] = {
@@ -4894,6 +5321,8 @@ exports["default"] = {
     Popover: popover_1.default,
     Tabs: tabs_1.default,
     Tooltip: tooltip_1.default,
+    InputCounter: input_counter_1.default,
+    CopyClipboard: clipboard_1.default,
     Events: events_1.default,
 };
 
