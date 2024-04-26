@@ -533,9 +533,6 @@ $("#kt_datatable_whitelists").DataTable({
 		data: 'data'
 	},
 	{
-		data: 'type'
-	},
-	{
 		data: 'actions'
 	},
 	],
