@@ -530,7 +530,7 @@ $("#kt_datatable_whitelists").DataTable({
 		'url': 'white-fetch.php'
 	},
 	'columns': [{
-		data: 'data'
+		data: 'ip'
 	},
 	{
 		data: 'actions'
