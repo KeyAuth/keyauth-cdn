@@ -139,6 +139,14 @@ body {
     border-radius: 5px !important;
 }
 
+#kt_datatable_whitelists_length label select {
+    width: 75px;
+    color: #ffffff !important;
+    background-color: #0f0f17 !important;
+    border: 1px solid #6b7280 !important;
+    border-radius: 5px !important;
+}
+
 #kt_datatable_auditlogs_length label select {
     width: 75px;
     color: #ffffff !important;
