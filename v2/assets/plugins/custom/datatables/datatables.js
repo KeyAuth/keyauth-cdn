@@ -530,11 +530,14 @@ $("#kt_datatable_whitelists").DataTable({
 		'url': 'white-fetch.php'
 	},
 	'columns': [{
-			data: 'data'
-		},
-		{
-			data: 'actions'
-		},
+		data: 'data'
+	},
+	{
+		data: 'type'
+	},
+	{
+		data: 'actions'
+	},
 	],
 	"language": {
 		"lengthMenu": "Show _MENU_",
