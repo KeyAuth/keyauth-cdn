@@ -495,7 +495,11 @@ $("#kt_datatable_blacklists").DataTable({
 	'ajax': {
 		'url': 'black-fetch.php'
 	},
-	'columns': [{
+	'columns': [
+		{
+			data: 'checkbox'
+		},
+		{
 			data: 'data'
 		},
 		{
