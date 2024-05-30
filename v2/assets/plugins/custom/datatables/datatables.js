@@ -8,6 +8,9 @@ $("#kt_datatable_licenses").DataTable({
 	},
 	'columns': [
 		{
+			data: 'checkbox'
+		},
+		{
 			data: 'key'
 		},
 		{
