@@ -161,7 +161,11 @@ $("#kt_datatable_users").DataTable({
 	'ajax': {
 		'url': 'user-fetch.php'
 	},
-	'columns': [{
+	'columns': [
+		{
+			data: 'checkbox'
+		},
+		{
 			data: 'username'
 		},
 		{
