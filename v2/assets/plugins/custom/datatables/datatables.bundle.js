@@ -11688,7 +11688,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoFiltered": "",
+			"sInfoFiltered": "(filtered from _MAX_ total entries)",
 	
 	
 			/**
@@ -15527,7 +15527,7 @@ return DataTable;
 var defaults = {
 	"language": {		
 		"info": "Showing _START_ to _END_ of _TOTAL_ records",
-    	"infoEmpty": "Showing 10 of many records",
+    	"infoEmpty": "Showing no records",
 		"lengthMenu": "_MENU_",
 		"paginate": {
 			"first": '<i class="first"></i>',
