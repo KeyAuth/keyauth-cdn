@@ -513,6 +513,9 @@ $("#kt_datatable_blacklists").DataTable({
 			data: 'type'
 		},
 		{
+			data: 'reason'
+		},
+		{
 			data: 'actions'
 		},
 	],
@@ -542,6 +545,9 @@ $("#kt_datatable_whitelists").DataTable({
 	},
 	'columns': [{
 		data: 'ip'
+	},
+	{
+		data: 'reason'
 	},
 	{
 		data: 'actions'
