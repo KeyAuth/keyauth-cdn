@@ -45,6 +45,6 @@ You will need to create a json file with the exact name as the username you adde
         "telegram": "https://t.me/username"
     }
 }
-
+```
 # Terms and Conditions
 * Follow https://keyauth.cc/terms
