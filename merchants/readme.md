@@ -46,3 +46,5 @@ You will need to create a json file with the exact name as the username you adde
     }
 }
 
+# Terms and Conditions
+* Follow https://keyauth.cc/terms
