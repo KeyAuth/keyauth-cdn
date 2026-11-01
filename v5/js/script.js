@@ -51,7 +51,7 @@ const methods = {
     title: "Welcome back.",
     description: "Sign in to continue to your application.",
     fields: [
-      ["Username", "text", "alex.dev"],
+      ["Username", "text", "keyauth-user"],
       ["Password", "password", "demo-password"],
       ["2FA code (if enabled)", "text", "123456"],
     ],
@@ -73,7 +73,7 @@ const methods = {
   email: {
     title: "An easier way in.",
     description: "Receive a one-time code in your inbox.",
-    fields: [["Email address", "email", "alex@example.com"]],
+    fields: [["Email address", "email", "user@example.com"]],
     button: "Send one-time code",
     icon: "✉",
     result: "Demo complete. In your app, a one-time code would be emailed.",
@@ -81,7 +81,7 @@ const methods = {
   magic: {
     title: "Skip the password.",
     description: "Sign in with a link sent to your email.",
-    fields: [["Email address", "email", "alex@example.com"]],
+    fields: [["Email address", "email", "user@example.com"]],
     button: "Send magic link",
     icon: "↗",
     result: "Demo complete. In your app, a sign-in link would be emailed.",
