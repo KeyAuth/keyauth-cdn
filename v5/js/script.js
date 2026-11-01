@@ -286,9 +286,9 @@ reduceMotion.addEventListener("change", () => {
   } else startWalkthrough();
 });
 const reviews = [
-  { name: "Fiko", topic: "PRODUCT & SUPPORT", quote: "Extremely satisfied with both the product and support." },
-  { name: "MCompetitive", topic: "LONG-TERM CONFIDENCE", quote: "Very reliable. Bought yearly and don't regret it." },
-  { name: "Spedted", topic: "VALUE & SUPPORT", quote: "Very cheap, very helpful." },
+  { name: "nexis", topic: "PRODUCT & SUPPORT", quote: "I am using keyauth from 2024 and this is best and easy to use" },
+  { name: "JohnDoe", topic: "STRONG SUPPORT", quote: "very strong support service." },
+  { name: "Tai", topic: "BEST FOR KEYS", quote: "Best website for making keys & auth for your apps." },
 ];
 let reviewIndex = 0,
   reviewPaused = false,
